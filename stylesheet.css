@@ -81,7 +81,7 @@ tr,
 p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 16px
+  font-size: 16px;
 }
 
 strong {
@@ -89,33 +89,35 @@ strong {
   font-size: 16px;
 }
 
-heading {
+h2 {
+  margin: 0;
+  font-weight: normal;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 28px;
-  color: #151d2c;
+  font-size: 22px;
 }
 
-papertitle {
+.papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
 }
 
-name {
+.name {
+  padding-top: 20px;
+  margin: 0;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 36px;
-  color: #151d2c;
+  font-size: 32px;
 }
 
 .one {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   position: relative;
 }
 
 .two {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   position: absolute;
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
@@ -130,4 +132,11 @@ name {
 
 span.highlight {
   background-color: #ffffd0;
+}
+
+.colored-box {
+    color: black;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 10px;
 }

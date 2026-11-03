@@ -64,7 +64,8 @@
       url: https://orlitany.github.io/
   venue: TMLR
   year: 2025
-  image: images/rehub.png
+  image: images/rehub.jpg
+  hover: images/rehub.gif
   links:
     - label: project page
       url: https://tomerborreda.github.io/rehub/

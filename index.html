@@ -1,3 +1,6 @@
+---
+# Publications are generated from _data/publications.yml
+---
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -83,81 +86,53 @@
             <tbody>
 
 
-              <tr onmouseout="radargen_stop()" onmouseover="radargen_start()">
+              {%- assign pubs = site.data.publications | where_exp: "p", "p.website != false" %}
+              {%- for p in pubs %}
+              {%- assign id = p.title | split: ":" | first | slugify | replace: "-", "_" %}
+              <tr{% if p.hover %} onmouseout="{{ id }}_stop()" onmouseover="{{ id }}_start()"{% endif %}>
                 <td style="padding:0%;width:20%;vertical-align:top">
                   <div class="one">
-                    <div class="two" id='radargen_image'>
-                      <img src='images/radargen.gif' width="95%">
+                    {%- if p.hover %}
+                    <div class="two" id='{{ id }}_image'>
+                      <img src='{{ p.hover }}' width="95%">
                     </div>
-                    <img src='images/radargen.jpg' width="95%">
+                    {%- endif %}
+                    <img src='{{ p.image }}' width="95%">
                   </div>
+                  {%- if p.hover %}
                   <script type="text/javascript">
-                    function radargen_start() {
-                      document.getElementById('radargen_image').style.opacity = "1";
+                    function {{ id }}_start() {
+                      document.getElementById('{{ id }}_image').style.opacity = "1";
                     }
 
-                    function radargen_stop() {
-                      document.getElementById('radargen_image').style.opacity = "0";
+                    function {{ id }}_stop() {
+                      document.getElementById('{{ id }}_image').style.opacity = "0";
                     }
-                    radargen_stop()
+                    {{ id }}_stop()
                   </script>
+                  {%- endif %}
                 </td>
                 <td style="padding:0;width:60%;max-width:60%">
-                  <a href="https://radargen.github.io/">
-                    <span class="papertitle">RadarGen: Automotive Radar Point Cloud Generation from Cameras</span>
+                  {%- if p.links %}
+                  <a href="{{ p.links[0].url }}">
+                    <span class="papertitle">{{ p.title }}</span>
                   </a> <br>
-                  <strong>Tomer Borreda</strong>,
-                  <a href="https://toytiny.github.io/">Fangqiang Ding</a>,
-                  <a href="https://www.cs.utoronto.ca/~fidler/">Sanja Fidler</a>,
-                  <a href="https://shengyuh.github.io/">Shengyu Huang</a>,
-                  <a href="https://orlitany.github.io/">Or Litany</a>
+                  {%- else %}
+                  <span class="papertitle">{{ p.title }}</span> <br>
+                  {%- endif %}
+                  {%- for a in p.authors %}
+                  {% if a.name == "Tomer Borreda" %}<strong>{{ a.name }}</strong>{% elsif a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% unless forloop.last %},{% endunless %}
+                  {%- endfor %}
                   <br>
-                  <em>ECCV</em>, 2026
+                  <em>{{ p.venue }}</em>, {{ p.year }}
                   <br>
-                  <a href="https://radargen.github.io/">project page</a> /
-                  <a href="https://github.com/tomerborreda/radargen">code</a> /
-                  <a href="https://arxiv.org/abs/2512.17897">arXiv</a>
+                  {%- for l in p.links %}
+                  <a href="{{ l.url }}">{{ l.label }}</a>{% unless forloop.last %} /{% endunless %}
+                  {%- endfor %}
                   <br><br><br><br>
                 </td>
               </tr>
-
-              <tr onmouseout="rehub_stop()" onmouseover="rehub_start()">
-                <td style="padding:0%;width:20%;vertical-align:top">
-                  <div class="one">
-                    <div class="two" id='rehub_image'>
-                      <img src='images/rehub.png' width="95%">
-                    </div>
-                    <img src='images/rehub.png' width="95%">
-                  </div>
-                  <script type="text/javascript">
-                    function rehub_start() {
-                      document.getElementById('rehub_image').style.opacity = "1";
-                    }
-
-                    function rehub_stop() {
-                      document.getElementById('rehub_image').style.opacity = "0";
-                    }
-                    rehub_stop()
-                  </script>
-                </td>
-                <td style="padding:0;width:60%;max-width:60%">
-                  <a href="https://tomerborreda.github.io/rehub/">
-                    <span class="papertitle">ReHub: Linear Complexity Graph Transformers with Adaptive Hub-Spoke
-                      Reassignment</span>
-                  </a> <br>
-                  <strong>Tomer Borreda</strong>,
-                  <a href="https://danielfreedman.ai/">Daniel Freedman</a>,
-                  <a href="https://orlitany.github.io/">Or Litany</a>
-                  <br>
-                  <em>TMLR</em>, 2025
-                  <br>
-                  <a href="https://tomerborreda.github.io/rehub/">project page</a> /
-                  <a href="https://github.com/tomerborreda/ReHub">code</a> /
-                  <a href="https://arxiv.org/abs/2412.01519">arXiv</a>
-                  <br><br><br><br>
-                </td>
-              </tr>
-
+              {%- endfor %}
 
             </tbody>
           </table>

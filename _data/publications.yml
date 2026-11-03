@@ -1,0 +1,74 @@
+# Single source of truth for publications.
+# Feeds both the website (index.html) and the CV (publications.tex, served at
+# https://tomerborreda.github.io/publications.tex and linked into Overleaf).
+#
+# Order here = order on the site and in the CV (newest first).
+# Fields:
+#   title, venue, year      required
+#   authors                 list of {name, url}; url optional. "Tomer Borreda" is bolded automatically.
+#   links                   list of {label, url}; first link is also used for the title on the website
+#   image                   thumbnail (needed to show on the website)
+#   hover                   optional image/gif shown on mouse-over
+#   website / cv            set to false to hide from that output (default: shown)
+
+- title: "DyRAD: Radar Novel View Synthesis for Dynamic Driving Scenes"
+  authors:
+    - name: Merav Keidar
+      url: https://meravkeidar.github.io/
+    - name: Tomer Borreda
+    - name: Rajalakshmi Nandakumar
+      url: https://rajalakshminandakumar.com/
+    - name: Or Litany
+      url: https://orlitany.github.io/
+  venue: arXiv
+  year: 2026
+  image: images/dyrad.jpg
+  hover: images/dyrad.gif
+  links:
+    - label: project page
+      url: https://dyrad-nvs.github.io/
+    - label: code
+      url: https://github.com/Dyrad-NVS/DyRAD
+    - label: arXiv
+      url: https://arxiv.org/abs/2609.39841
+
+- title: "RadarGen: Automotive Radar Point Cloud Generation from Cameras"
+  authors:
+    - name: Tomer Borreda
+    - name: Fangqiang Ding
+      url: https://toytiny.github.io/
+    - name: Sanja Fidler
+      url: https://www.cs.utoronto.ca/~fidler/
+    - name: Shengyu Huang
+      url: https://shengyuh.github.io/
+    - name: Or Litany
+      url: https://orlitany.github.io/
+  venue: ECCV
+  year: 2026
+  image: images/radargen.jpg
+  hover: images/radargen.gif
+  links:
+    - label: project page
+      url: https://radargen.github.io/
+    - label: code
+      url: https://github.com/tomerborreda/radargen
+    - label: arXiv
+      url: https://arxiv.org/abs/2512.17897
+
+- title: "ReHub: Linear Complexity Graph Transformers with Adaptive Hub-Spoke Reassignment"
+  authors:
+    - name: Tomer Borreda
+    - name: Daniel Freedman
+      url: https://danielfreedman.ai/
+    - name: Or Litany
+      url: https://orlitany.github.io/
+  venue: TMLR
+  year: 2025
+  image: images/rehub.png
+  links:
+    - label: project page
+      url: https://tomerborreda.github.io/rehub/
+    - label: code
+      url: https://github.com/tomerborreda/ReHub
+    - label: arXiv
+      url: https://arxiv.org/abs/2412.01519

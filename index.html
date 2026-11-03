@@ -90,14 +90,14 @@
               {%- for p in pubs %}
               {%- assign id = p.title | split: ":" | first | slugify | replace: "-", "_" %}
               <tr{% if p.hover %} onmouseout="{{ id }}_stop()" onmouseover="{{ id }}_start()"{% endif %}>
-                <td style="padding:0%;width:20%;vertical-align:top">
+                <td style="padding:16px;width:20%;vertical-align:top">
                   <div class="one">
                     {%- if p.hover %}
                     <div class="two" id='{{ id }}_image'>
-                      <img src='{{ p.hover }}' width="95%">
+                      <img src='{{ p.hover }}' width="160" height="160" style="object-fit:cover">
                     </div>
                     {%- endif %}
-                    <img src='{{ p.image }}' width="95%">
+                    <img src='{{ p.image }}' width="160" height="160" style="object-fit:cover">
                   </div>
                   {%- if p.hover %}
                   <script type="text/javascript">
@@ -112,7 +112,7 @@
                   </script>
                   {%- endif %}
                 </td>
-                <td style="padding:0;width:60%;max-width:60%">
+                <td style="padding:36px 8px 16px 8px;width:80%;vertical-align:top">
                   {%- if p.links %}
                   <a href="{{ p.links[0].url }}">
                     <span class="papertitle">{{ p.title }}</span>
@@ -129,7 +129,6 @@
                   {%- for l in p.links %}
                   <a href="{{ l.url }}">{{ l.label }}</a>{% unless forloop.last %} /{% endunless %}
                   {%- endfor %}
-                  <br><br><br><br>
                 </td>
               </tr>
               {%- endfor %}
